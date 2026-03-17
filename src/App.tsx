@@ -1,0 +1,136 @@
+import React, { useState, useRef, useEffect } from 'react';
+import './Global.css';
+import Nav from './components/Nav';
+import Hero from './components/Hero';
+import TechStack from './components/TechStack';
+import Services from './components/Services';
+import Projects from './components/Projects';
+import WhyChooseMe from './components/WhyChooseMe';
+import Footer from './components/Footer';
+import Contact from './components/Contact';
+import ServicesModal from './components/ServicesModal';
+import ProjectsModal from './components/ProjectsModal';
+import TermsModal from './components/TermsModal';
+import PrivacyModal from './components/PrivacyModal';
+import TechStackModal from './components/TechStackModal';
+import NeuralBackground from './components/NeuralBackground';
+import VoidShader from './components/VoidShader';
+import BootSequence from './components/BootSequence';
+import SystemStatus from './components/SystemStatus';
+import DataStream from './components/DataStream';
+import { AnimatePresence } from 'framer-motion';
+import portfolioData from './data/portfolio.json';
+
+const App: React.FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved === 'dark';
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
+  const [activeModal, setActiveModal] = useState<'contact' | 'services' | 'projects' | 'terms' | 'privacy' | 'techstack' | null>(null);
+  const workSectionRef = useRef<HTMLDivElement>(null);
+
+  // Hyper Alive: Single Static Tab Title
+  useEffect(() => {
+    document.title = `${portfolioData.personal.name} - Portfolio`;
+  }, []);
+
+  const closeModals = () => setActiveModal(null);
+
+  const scrollToWork = () => {
+    workSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Deep Bug Fix: Prevent background scroll when modal is open
+  React.useEffect(() => {
+    if (activeModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [activeModal]);
+
+  return (
+    <div style={{ overflowX: 'hidden', position: 'relative' }}>
+      <div className="noise-overlay" />
+      <div className="tech-grid" />
+      <DataStream />
+      <BootSequence />
+      <SystemStatus />
+
+      {/* Fixed Background Layers */}
+      <VoidShader isDarkMode={isDarkMode} />
+      <NeuralBackground isDarkMode={isDarkMode} />
+
+      {/* UI Content Layer */}
+      <div id="ui-root">
+        <Nav
+          onWorkClick={scrollToWork}
+          onContactClick={() => setActiveModal('contact')}
+          onThemeToggle={toggleTheme}
+          isDarkMode={isDarkMode}
+        />
+        <main>
+          <Hero
+            onContactClick={() => setActiveModal('contact')}
+            onWorkClick={scrollToWork}
+          />
+          <TechStack onViewFull={() => setActiveModal('techstack')} />
+          <WhyChooseMe />
+
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-lg)' }}>
+            <span className="mono-text" style={{ color: 'var(--accent-blue)', fontWeight: 700, fontSize: '10px' }}>
+              // NEURAL_TORQUE_DIAGNOSTICS
+            </span>
+            <h2 className="stagger-in" style={{ fontSize: 'clamp(24px, 4vw, 36px)', color: 'var(--text-main)', marginTop: 'var(--spacing-xs)' }}>
+              The High-Fidelity Build Log
+            </h2>
+            <p className="mono-text" style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '8px' }}>
+              Compiling raw ambition into production-ready reality (without the mechanical lag).
+            </p>
+          </div>
+
+          <div ref={workSectionRef} className="container" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 'var(--spacing-lg)',
+            padding: 'var(--spacing-xl) 0'
+          }}>
+            <Services onViewClick={() => setActiveModal('services')} />
+            <Projects onViewClick={() => setActiveModal('projects')} />
+          </div>
+        </main>
+        <Footer
+          onContactClick={() => setActiveModal('contact')}
+          onTermsClick={() => setActiveModal('terms')}
+          onPrivacyClick={() => setActiveModal('privacy')}
+        />
+      </div>
+
+      {/* Modals wrapped in AnimatePresence for reliability */}
+      <AnimatePresence mode="wait">
+        {activeModal === 'contact' && <Contact onClose={closeModals} />}
+        {activeModal === 'services' && <ServicesModal onClose={closeModals} />}
+        {activeModal === 'projects' && <ProjectsModal onClose={closeModals} />}
+        {activeModal === 'terms' && <TermsModal onClose={closeModals} />}
+        {activeModal === 'privacy' && <PrivacyModal onClose={closeModals} />}
+        {activeModal === 'techstack' && <TechStackModal onClose={closeModals} />}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default App;
