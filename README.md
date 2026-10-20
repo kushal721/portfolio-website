@@ -23,6 +23,7 @@ Files (images, videos, CV) go in `public/`. In the JSON, refer to them with a pa
 | Project screenshots / videos | `public/projects/<project-slug>/` |
 | Accent colour | `"site.accent"` (any CSS colour, e.g. `"#1d4ed8"`) |
 | Tab title & search description | `"site.title"`, `"site.description"` |
+| Site address (used in link previews) | `"site.url"` — also update `public/robots.txt` and `public/sitemap.xml` if it changes |
 
 ### Add a project
 

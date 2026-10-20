@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
 const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 
-// Fills the page <title> and meta description from content/portfolio.json,
+// Fills the page <title>, meta description and site URL from content/portfolio.json,
 // so search engines and link previews see them without running JavaScript.
 const contentMeta = (): Plugin => ({
   name: 'content-meta',
@@ -13,6 +13,7 @@ const contentMeta = (): Plugin => ({
     return html
       .replaceAll('%SITE_TITLE%', escape(site.title))
       .replaceAll('%SITE_DESCRIPTION%', escape(site.description ?? ''))
+      .replaceAll('%SITE_URL%', escape((site.url ?? '').replace(/\/$/, '')))
   },
 })
 

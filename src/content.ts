@@ -50,7 +50,7 @@ export interface Education {
 }
 
 export interface Portfolio {
-  site: { title: string; description?: string; accent?: string };
+  site: { url?: string; title: string; description?: string; accent?: string };
   profile: {
     name: string;
     firstName: string;
