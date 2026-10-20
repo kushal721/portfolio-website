@@ -1,0 +1,472 @@
+{
+  "site": {
+    "title": "Kushal Bhatta — Data Analyst & AI Engineer",
+    "description": "Kushal Bhatta — data analyst, prompt engineer and full-stack developer in Kathmandu, Nepal. Projects, demos and CV.",
+    "accent": "#1d4ed8"
+  },
+  "profile": {
+    "name": "Kushal Bhatta",
+    "firstName": "Kushal",
+    "initials": "KB",
+    "handle": "kushalbhatta",
+    "role": "Data Analyst · AI Evaluation · Full Stack",
+    "location": "Kathmandu, Nepal",
+    "photo": "/images/profile.jpg",
+    "resume": "/cv/Kushal_CV.pdf",
+    "intro": "I work with **data** and **AI** — evaluating model responses, finding quality issues in large datasets, and building **dashboards** and **full-stack apps** that make the work easier to see and act on.",
+    "available": "Open to AI engineering and data roles"
+  },
+  "contact": {
+    "email": "bhattakushal1@gmail.com",
+    "phone": "",
+    "github": "https://github.com/kushal721",
+    "linkedin": "https://www.linkedin.com/in/kushal-bhatta-019734358/",
+    "title": "Let's work together",
+    "text": "Hiring for a data or AI role, or have a project in mind? I'd be glad to hear from you."
+  },
+  "highlights": [
+    {
+      "icon": "BarChart3",
+      "title": "Data analysis",
+      "subtitle": "Python, pandas, SQL",
+      "text": "Trend, gap and change analysis on business and assurance data."
+    },
+    {
+      "icon": "Sparkles",
+      "title": "AI evaluation",
+      "subtitle": "Prompts & model quality",
+      "text": "Checking AI answers against references and finding where they go wrong."
+    },
+    {
+      "icon": "LayoutDashboard",
+      "title": "Reporting",
+      "subtitle": "Looker Studio & Airtable",
+      "text": "Dashboards and trackers that show progress at a glance."
+    },
+    {
+      "icon": "Code2",
+      "title": "Full stack",
+      "subtitle": "MERN apps",
+      "text": "React frontends, Express APIs and MongoDB, from login to deploy."
+    }
+  ],
+  "projects": [
+    {
+      "slug": "construction-pro",
+      "title": "ConstructionPro — Professionals Nepal",
+      "summary": "A marketplace where families in Nepal find house designs with cost estimates and book the architects, engineers and contractors who drew them.",
+      "meta": "Full-stack web app · MERN",
+      "featured": true,
+      "tags": [
+        "Marketplace",
+        "Real-time chat",
+        "MERN"
+      ],
+      "cover": "/projects/construction-pro/home.jpg",
+      "description": "ConstructionPro connects people who want to build a house with the professionals who design them. Clients browse a design library with filters for budget, area and style, save favourites, book a consultation in a professional's free time slot, and chat in real time. Professionals manage their portfolio, availability and bookings from a dashboard, and admins moderate content and export reports.",
+      "features": [
+        "Design library with search, filters, sorting and shareable URLs",
+        "Booking system built on each professional's published availability",
+        "Real-time messaging with online status and typing indicators (Socket.IO)",
+        "Role-based dashboards for clients, professionals and admins, with charts and CSV export",
+        "JWT authentication, image uploads, light and dark themes"
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "TanStack Query",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Socket.IO",
+        "JWT",
+        "Docker"
+      ],
+      "stats": [
+        {
+          "label": "User roles",
+          "value": "Client · Pro · Admin"
+        },
+        {
+          "label": "Realtime",
+          "value": "Socket.IO chat"
+        },
+        {
+          "label": "Tooling",
+          "value": "Docker + CI"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/kushal721/Construction-Professionals-Nepal",
+        "live": "",
+        "demo": ""
+      },
+      "video": {
+        "src": "/projects/construction-pro/demo.mp4",
+        "poster": "/projects/construction-pro/home.jpg"
+      },
+      "images": [
+        {
+          "src": "/projects/construction-pro/home.jpg",
+          "caption": "Home page"
+        },
+        {
+          "src": "/projects/construction-pro/designs.jpg",
+          "caption": "Design library with filters"
+        },
+        {
+          "src": "/projects/construction-pro/design-detail.jpg",
+          "caption": "Design detail"
+        },
+        {
+          "src": "/projects/construction-pro/professional.jpg",
+          "caption": "Professional profile & booking"
+        },
+        {
+          "src": "/projects/construction-pro/messages.jpg",
+          "caption": "Real-time messages"
+        },
+        {
+          "src": "/projects/construction-pro/pro-dashboard.jpg",
+          "caption": "Professional dashboard"
+        },
+        {
+          "src": "/projects/construction-pro/admin-dark.jpg",
+          "caption": "Admin overview (dark mode)"
+        },
+        {
+          "src": "/projects/construction-pro/mobile.jpg",
+          "caption": "Mobile home page"
+        }
+      ]
+    },
+    {
+      "slug": "mcqprep",
+      "title": "MCQPrep — Exam Practice App",
+      "summary": "MCQ practice for Nepal's entrance and competitive exams (IOE, IOM, KU, Loksewa) with instant feedback and an admin question bank.",
+      "meta": "Full-stack web app · MERN",
+      "featured": true,
+      "tags": [
+        "EdTech",
+        "Quiz",
+        "MERN"
+      ],
+      "cover": "/projects/mcqprep/home.jpg",
+      "description": "Students pick a course and subject and get questions they haven't seen yet, with the correct answer and an explanation shown as soon as they answer. Progress and accuracy are tracked per subject without needing an account. Admins log in to manage courses, subjects and the question bank through a fast editor.",
+      "features": [
+        "No-repeat questions drawn from the ones a student hasn't answered yet",
+        "Answers are checked on the server — the answer key never reaches the browser early",
+        "Progress bars, accuracy, session score and streaks",
+        "Keyboard shortcuts for answering and moving to the next question",
+        "Admin dashboard, question bank search and a bulk-friendly question editor"
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "React Router",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "JWT"
+      ],
+      "stats": [
+        {
+          "label": "Exams",
+          "value": "IOE · IOM · KU · Loksewa"
+        },
+        {
+          "label": "Feedback",
+          "value": "Instant, server-graded"
+        },
+        {
+          "label": "Admin",
+          "value": "Full question CMS"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/kushal721/MCQAPP_01",
+        "live": "",
+        "demo": ""
+      },
+      "video": {
+        "src": "/projects/mcqprep/demo.mp4",
+        "poster": "/projects/mcqprep/home.jpg"
+      },
+      "images": [
+        {
+          "src": "/projects/mcqprep/home.jpg",
+          "caption": "Home page"
+        },
+        {
+          "src": "/projects/mcqprep/course.jpg",
+          "caption": "Course & subject progress"
+        },
+        {
+          "src": "/projects/mcqprep/quiz.jpg",
+          "caption": "Answer feedback with explanation"
+        },
+        {
+          "src": "/projects/mcqprep/admin-dashboard.jpg",
+          "caption": "Admin dashboard"
+        },
+        {
+          "src": "/projects/mcqprep/admin-questions.jpg",
+          "caption": "Question bank"
+        },
+        {
+          "src": "/projects/mcqprep/admin-editor.jpg",
+          "caption": "Question editor"
+        },
+        {
+          "src": "/projects/mcqprep/mobile.jpg",
+          "caption": "Quiz on mobile"
+        }
+      ]
+    },
+    {
+      "slug": "heart-attack-prediction",
+      "title": "Heart Attack Prediction",
+      "summary": "A machine learning model that predicts heart attack risk from clinical data, with tuning and a full evaluation.",
+      "meta": "Machine learning · Jupyter",
+      "tags": [
+        "Machine learning",
+        "Health",
+        "scikit-learn"
+      ],
+      "cover": "/projects/heart-attack/correlation.png",
+      "coverFit": "contain",
+      "description": "An end-to-end ML project on a clinical heart-disease dataset: exploring and visualising the data, cleaning and one-hot encoding features, training a decision tree classifier, and tuning its hyperparameters with cross-validated grid search before evaluating it on held-out data.",
+      "features": [
+        "Exploratory analysis: distributions, correlations, age vs cholesterol, blood pressure by outcome",
+        "Feature engineering and one-hot encoding",
+        "Decision tree classifier tuned with GridSearchCV over 10 runs",
+        "Evaluation with confusion matrix and classification report"
+      ],
+      "stack": [
+        "Python",
+        "pandas",
+        "NumPy",
+        "scikit-learn",
+        "Matplotlib",
+        "Seaborn"
+      ],
+      "stats": [
+        {
+          "label": "Best CV score",
+          "value": "0.78"
+        },
+        {
+          "label": "Test accuracy",
+          "value": "72%"
+        },
+        {
+          "label": "Model",
+          "value": "Decision tree"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/kushal721/Heart-Attack-Prediction"
+      },
+      "images": [
+        {
+          "src": "/projects/heart-attack/correlation.png",
+          "caption": "Feature correlation heatmap"
+        },
+        {
+          "src": "/projects/heart-attack/age-cholesterol.png",
+          "caption": "Age vs cholesterol"
+        },
+        {
+          "src": "/projects/heart-attack/histograms.png",
+          "caption": "Feature distributions"
+        },
+        {
+          "src": "/projects/heart-attack/target.png",
+          "caption": "Target distribution"
+        },
+        {
+          "src": "/projects/heart-attack/decision-tree.png",
+          "caption": "Tuned decision tree"
+        }
+      ]
+    },
+    {
+      "slug": "zomato-eda",
+      "title": "Zomato Restaurant Data Analysis",
+      "summary": "Exploratory data analysis of 9,500+ Zomato restaurants: ratings, countries, cities and online delivery.",
+      "meta": "Data analysis · Jupyter",
+      "tags": [
+        "EDA",
+        "Data visualisation",
+        "pandas"
+      ],
+      "cover": "/projects/zomato-eda/ratings.png",
+      "coverFit": "contain",
+      "description": "Merged the Zomato restaurant dataset with country codes and explored it with pandas and Seaborn: checking missing values, grouping ratings into bands, comparing countries and cities, and finding where online delivery is available.",
+      "features": [
+        "Most records come from India, followed by the USA and the UK",
+        "Most ratings fall between 2.5 and 3.9, with a large share of unrated restaurants",
+        "Unrated restaurants are almost all in India",
+        "Online delivery is only offered in India and the UAE"
+      ],
+      "stack": [
+        "Python",
+        "pandas",
+        "Matplotlib",
+        "Seaborn",
+        "Jupyter"
+      ],
+      "links": {
+        "github": "https://github.com/kushal721/EDA"
+      },
+      "images": [
+        {
+          "src": "/projects/zomato-eda/ratings.png",
+          "caption": "Ratings distribution"
+        },
+        {
+          "src": "/projects/zomato-eda/rating-colors.png",
+          "caption": "Ratings by rating band"
+        },
+        {
+          "src": "/projects/zomato-eda/countries.png",
+          "caption": "Top 3 countries by records"
+        },
+        {
+          "src": "/projects/zomato-eda/cities.png",
+          "caption": "Top 5 cities"
+        },
+        {
+          "src": "/projects/zomato-eda/missing.png",
+          "caption": "Missing values check"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "SecurityPal AI",
+      "location": "Baluatar, Kathmandu",
+      "current": true,
+      "roles": [
+        {
+          "title": "Data Analyst",
+          "team": "Data Team",
+          "period": "Aug 2026 – Present",
+          "points": [
+            "Analyse business and assurance datasets to find trends, discrepancies and insights that support operational decisions.",
+            "Run gap, change and trend analyses across projects, including questionnaire responses, vendor status and answer integrity.",
+            "Build and maintain Looker Studio dashboards and Airtable trackers to monitor performance and report progress.",
+            "Automate repetitive data-processing and reporting tasks with Python and Excel to cut manual effort and turnaround time.",
+            "Investigate data-quality issues and share findings with stakeholders to improve reporting reliability."
+          ]
+        },
+        {
+          "title": "Prompt Engineer",
+          "team": "Data Team",
+          "period": "Mar 2025 – Aug 2026",
+          "points": [
+            "Evaluated AI-generated responses against reference information and quality criteria to catch inaccurate, outdated or incomplete answers.",
+            "Ran structured data annotation and prompt analysis to assess model behaviour and improve response quality.",
+            "Processed and analysed datasets of 10,000+ records with Python (pandas, NumPy) and Excel for AI evaluation workflows.",
+            "Documented response-level quality issues to guide prompt refinement and make AI-assisted workflows more reliable."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Tanvi Tech Pvt. Ltd.",
+      "location": "Kathmandu",
+      "roles": [
+        {
+          "title": "Full Stack MERN Intern",
+          "period": "Dec 2023 – May 2024",
+          "points": [
+            "Built responsive interfaces and reusable components with React, JavaScript and Tailwind CSS.",
+            "Connected the frontend to Node.js / Express REST APIs to fetch, submit and update data.",
+            "Used MongoDB for data storage, Postman for API testing, and Git/GitHub for version control."
+          ]
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "BSc (Hons) Computing",
+      "school": "Islington College — London Metropolitan University",
+      "location": "Kathmandu, Nepal",
+      "period": "Graduated Sep 2024",
+      "details": "Coursework: Artificial Intelligence, Algorithms, Software Engineering, Operating Systems, Database Management."
+    },
+    {
+      "degree": "+2 Science",
+      "school": "Hetauda School of Management and Social Sciences",
+      "location": "Hetauda, Nepal",
+      "period": "",
+      "details": ""
+    }
+  ],
+  "skills": [
+    {
+      "title": "AI & Evaluation",
+      "items": [
+        "Prompt engineering",
+        "AI model evaluation",
+        "Response quality analysis",
+        "Data annotation",
+        "Prompt performance evaluation"
+      ]
+    },
+    {
+      "title": "Programming & Data",
+      "items": [
+        "Python",
+        "pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+        "scikit-learn",
+        "SQL",
+        "Excel",
+        "JavaScript"
+      ]
+    },
+    {
+      "title": "Data Quality & Reporting",
+      "items": [
+        "Data validation",
+        "Gap analysis",
+        "Change analysis",
+        "Quality assurance",
+        "Looker Studio",
+        "Airtable"
+      ]
+    },
+    {
+      "title": "Development & Tools",
+      "items": [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "REST APIs",
+        "Tailwind CSS",
+        "Git & GitHub",
+        "Postman",
+        "VS Code"
+      ]
+    }
+  ],
+  "interests": [
+    "AI engineering",
+    "LLM evaluation",
+    "AI reliability",
+    "Adversarial AI testing",
+    "Machine learning",
+    "Data quality",
+    "Responsible AI"
+  ]
+}

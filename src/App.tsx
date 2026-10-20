@@ -1,135 +1,68 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUp } from 'lucide-react';
 import './Global.css';
-import Nav from './components/Nav';
+import Nav, { type NavLink } from './components/Nav';
 import Hero from './components/Hero';
-import TechStack from './components/TechStack';
-import Services from './components/Services';
+import Highlights from './components/Highlights';
 import Projects from './components/Projects';
-import WhyChooseMe from './components/WhyChooseMe';
+import Skills from './components/Skills';
+import { EducationSection, ExperienceSection } from './components/Experience';
 import Footer from './components/Footer';
-import Contact from './components/Contact';
-import ServicesModal from './components/ServicesModal';
-import ProjectsModal from './components/ProjectsModal';
-import TermsModal from './components/TermsModal';
-import PrivacyModal from './components/PrivacyModal';
-import TechStackModal from './components/TechStackModal';
-import NeuralBackground from './components/NeuralBackground';
-import VoidShader from './components/VoidShader';
-import BootSequence from './components/BootSequence';
-import SystemStatus from './components/SystemStatus';
-import DataStream from './components/DataStream';
-import { AnimatePresence } from 'framer-motion';
-import portfolioData from './data/portfolio.json';
+import { education, experience, projects, site, skills } from './content';
+
+if (site.accent) document.documentElement.style.setProperty('--accent', site.accent);
+
+// Sections in page order; empty ones are skipped.
+type Section = NavLink & { show: boolean; render: (index: string) => React.ReactNode };
+
+const sections = ([
+  { id: 'projects', label: 'Projects', show: projects.length > 0, render: (i) => <Projects index={i} /> },
+  { id: 'experience', label: 'Experience', show: experience.length > 0, render: (i) => <ExperienceSection index={i} /> },
+  { id: 'skills', label: 'Skills', show: skills.length > 0, render: (i) => <Skills index={i} /> },
+  { id: 'education', label: 'Education', show: education.length > 0, render: (i) => <EducationSection index={i} /> },
+] satisfies Section[]).filter((s) => s.show);
+
+const navLinks: NavLink[] = [...sections, { id: 'contact', label: 'Contact' }];
 
 const App: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved === 'dark';
-  });
+  const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.remove('dark-mode');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  const toggleTheme = () => setIsDarkMode(!isDarkMode);
-
-  const [activeModal, setActiveModal] = useState<'contact' | 'services' | 'projects' | 'terms' | 'privacy' | 'techstack' | null>(null);
-  const workSectionRef = useRef<HTMLDivElement>(null);
-
-  // Hyper Alive: Single Static Tab Title
-  useEffect(() => {
-    document.title = `${portfolioData.personal.name} - Portfolio`;
+    // Show past the first screen, and hide again once the footer (which has its own link) is in view.
+    const onScroll = () => {
+      const footerTop = document.getElementById('contact')?.getBoundingClientRect().top ?? Infinity;
+      setShowTop(window.scrollY > window.innerHeight && footerTop > window.innerHeight);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const closeModals = () => setActiveModal(null);
-
-  const scrollToWork = () => {
-    workSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // Deep Bug Fix: Prevent background scroll when modal is open
-  React.useEffect(() => {
-    if (activeModal) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => { document.body.style.overflow = 'unset'; };
-  }, [activeModal]);
-
   return (
-    <div style={{ overflowX: 'hidden', position: 'relative' }}>
-      <div className="noise-overlay" />
-      <div className="tech-grid" />
-      <DataStream />
-      <BootSequence />
-      <SystemStatus />
-
-      {/* Fixed Background Layers */}
-      <VoidShader isDarkMode={isDarkMode} />
-      <NeuralBackground isDarkMode={isDarkMode} />
-
-      {/* UI Content Layer */}
-      <div id="ui-root">
-        <Nav
-          onWorkClick={scrollToWork}
-          onContactClick={() => setActiveModal('contact')}
-          onThemeToggle={toggleTheme}
-          isDarkMode={isDarkMode}
-        />
-        <main>
-          <Hero
-            onContactClick={() => setActiveModal('contact')}
-            onWorkClick={scrollToWork}
-          />
-          <TechStack onViewFull={() => setActiveModal('techstack')} />
-          <WhyChooseMe />
-
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-lg)' }}>
-            <span className="mono-text" style={{ color: 'var(--accent-blue)', fontWeight: 700, fontSize: '10px' }}>
-              // NEURAL_TORQUE_DIAGNOSTICS
-            </span>
-            <h2 className="stagger-in" style={{ fontSize: 'clamp(24px, 4vw, 36px)', color: 'var(--text-main)', marginTop: 'var(--spacing-xs)' }}>
-              The High-Fidelity Build Log
-            </h2>
-            <p className="mono-text" style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '8px' }}>
-              Compiling raw ambition into production-ready reality (without the mechanical lag).
-            </p>
-          </div>
-
-          <div ref={workSectionRef} className="container" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 'var(--spacing-lg)',
-            padding: 'var(--spacing-xl) 0'
-          }}>
-            <Services onViewClick={() => setActiveModal('services')} />
-            <Projects onViewClick={() => setActiveModal('projects')} />
-          </div>
-        </main>
-        <Footer
-          onContactClick={() => setActiveModal('contact')}
-          onTermsClick={() => setActiveModal('terms')}
-          onPrivacyClick={() => setActiveModal('privacy')}
-        />
-      </div>
-
-      {/* Modals wrapped in AnimatePresence for reliability */}
-      <AnimatePresence mode="wait">
-        {activeModal === 'contact' && <Contact onClose={closeModals} />}
-        {activeModal === 'services' && <ServicesModal onClose={closeModals} />}
-        {activeModal === 'projects' && <ProjectsModal onClose={closeModals} />}
-        {activeModal === 'terms' && <TermsModal onClose={closeModals} />}
-        {activeModal === 'privacy' && <PrivacyModal onClose={closeModals} />}
-        {activeModal === 'techstack' && <TechStackModal onClose={closeModals} />}
+    <>
+      <Nav links={navLinks} />
+      <main>
+        <Hero />
+        <Highlights />
+        {sections.map((s, i) => (
+          <React.Fragment key={s.id}>{s.render(String(i + 1).padStart(2, '0'))}</React.Fragment>
+        ))}
+      </main>
+      <Footer links={sections} />
+      <AnimatePresence>
+        {showTop && (
+          <motion.a
+            href="#top"
+            className="back-to-top"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 12 }}
+          >
+            <ArrowUp size={15} /> <span>Back to top</span>
+          </motion.a>
+        )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 

@@ -1,142 +1,77 @@
-import React from 'react';
-import NepalFlag from './NepalFlag';
-import portfolioData from '../data/portfolio.json';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FileText, Menu, X } from 'lucide-react';
+import { profile } from '../content';
 
-interface NavProps {
-  onWorkClick: () => void; 
-  onContactClick: () => void;
-  onThemeToggle: () => void;
-  isDarkMode: boolean;
+export interface NavLink {
+  id: string;
+  label: string;
 }
 
-const Nav: React.FC<NavProps> = ({ onWorkClick, onContactClick, onThemeToggle, isDarkMode }) => {
+const Nav: React.FC<{ links: NavLink[] }> = ({ links }) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <nav style={{ 
-      background: 'var(--glass-bg)', 
-      backdropFilter: 'var(--glass-blur)', 
-      WebkitBackdropFilter: 'var(--glass-blur)',
-      borderBottom: 'none',
-      boxShadow: 'none', // Removed any potential shadow
-      position: 'relative',
-      overflow: 'hidden', // Contain the glass-flare
-      zIndex: 100000
-    }}>
-      <div className="glass-flare"></div>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        {/* Left-aligned Identity Group */}
-        <div 
-          className="easter-egg-trigger"
-          style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-md)', cursor: 'pointer' }}
-        >
-          <NepalFlag size={32} />
-          <div className="animate-flag-text" style={{ 
-            fontSize: '14px', 
-            letterSpacing: '0.05em', 
-            fontFamily: 'var(--font-mono)',
-            paddingTop: '2px' 
-          }}>
-            {portfolioData.navigation.logoTitle}
-          </div>
-        </div>
-
-        {/* Right-aligned Navigation Links */}
-        <div className="mono-text" style={{ 
-          display: 'flex', 
-          gap: 'var(--spacing-lg)', 
-          fontSize: '11px', 
-          fontWeight: 700
-        }}>
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              onWorkClick();
-            }}
-            style={{ 
-              color: 'var(--text-main)', 
-              textDecoration: 'none', 
-              opacity: 0.8, 
-              border: 'none',
-              background: 'transparent',
-              borderBottom: '1.5px solid transparent', 
-              paddingBottom: '2px',
-              cursor: 'pointer',
-              fontSize: '11px',
-              fontWeight: 700,
-              fontFamily: 'inherit',
-              transition: 'all 0.3s var(--ease-premium)' 
-            }} 
-            onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = '1';
-              e.currentTarget.style.borderBottomColor = 'var(--text-main)';
-            }} 
-            onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = '0.8';
-              e.currentTarget.style.borderBottomColor = 'transparent';
-            }}
-          >
-            {portfolioData.navigation.links.find(l => l.id === "work")?.label || "01_BLUEPRINT"}
-          </button>
-
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              onContactClick();
-            }}
-            style={{ 
-              color: 'var(--text-main)', 
-              textDecoration: 'none', 
-              opacity: 0.8, 
-              border: 'none',
-              background: 'transparent',
-              borderBottom: '1.5px solid transparent', 
-              paddingBottom: '2px',
-              cursor: 'pointer',
-              fontSize: '11px',
-              fontWeight: 700,
-              fontFamily: 'inherit',
-              transition: 'all 0.3s var(--ease-premium)' 
-            }} 
-            onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = '1';
-              e.currentTarget.style.borderBottomColor = 'var(--text-main)';
-            }} 
-            onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = '0.8';
-              e.currentTarget.style.borderBottomColor = 'transparent';
-            }}
-          >
-            {portfolioData.navigation.links.find(l => l.id === "contact")?.label || "02_CONNECT"}
-          </button>
-
-          {/* Theme Toggle */}
+    <>
+      <header className={`nav ${scrolled || open ? 'scrolled' : ''}`}>
+        <div className="nav-inner">
+          <a href="#top" className="logo" onClick={() => setOpen(false)}>
+            <span className="logo-mark">{profile.initials}</span>
+            {profile.handle}
+          </a>
+          <nav className="nav-links">
+            {links.map((l) => (
+              <a key={l.id} href={`#${l.id}`}>
+                {l.label}
+              </a>
+            ))}
+          </nav>
+          {profile.resume && (
+            <a className="btn btn-primary nav-resume" href={profile.resume} target="_blank" rel="noreferrer">
+              <FileText size={16} /> Download CV
+            </a>
+          )}
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onThemeToggle();
-            }}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              cursor: 'pointer',
-              color: 'var(--text-main)',
-              display: 'flex',
-              alignItems: 'center',
-              padding: '0 4px',
-              transition: 'transform 0.3s ease'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-            title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            className="icon-btn nav-toggle"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
           >
-            {isDarkMode ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--gold-accent)' }}><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-            )}
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
-      </div>
-    </nav>
+      </header>
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            className="mobile-menu"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.2 }}
+          >
+            {links.map((l) => (
+              <a key={l.id} href={`#${l.id}`} onClick={() => setOpen(false)}>
+                {l.label}
+              </a>
+            ))}
+            {profile.resume && (
+              <a className="btn btn-primary" href={profile.resume} target="_blank" rel="noreferrer">
+                <FileText size={16} /> Download CV
+              </a>
+            )}
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
