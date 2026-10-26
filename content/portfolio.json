@@ -2,7 +2,7 @@
   "site": {
     "url": "https://kushal-bhatta.com.np",
     "title": "Kushal Bhatta — Data Analyst & AI Engineer",
-    "description": "Kushal Bhatta — data analyst, prompt engineer and full-stack developer in Kathmandu, Nepal. Projects, demos and CV.",
+    "description": "Kushal Bhatta — data analyst, AI evaluator and full-stack developer in Kathmandu, Nepal. Large-scale data analysis, dashboards, automations, data pipelines, AI evals, projects and CV.",
     "accent": "#1d4ed8"
   },
   "profile": {
@@ -14,7 +14,7 @@
     "location": "Kathmandu, Nepal",
     "photo": "/images/profile.jpg",
     "resume": "/cv/Kushal_CV.pdf",
-    "intro": "I work with **data** and **AI** — evaluating model responses, finding quality issues in large datasets, and building **dashboards** and **full-stack apps** that make the work easier to see and act on.",
+    "intro": "I'm a **data analyst** working with **data** and **AI** — analysing large datasets for trends and quality issues, cleaning data and building **automated pipelines**, running **AI evals** and security testing, and creating **dynamic dashboards**, **automations** and **management systems** that make work easier to see and act on.",
     "available": "Open to AI engineering and data roles"
   },
   "contact": {
@@ -29,33 +29,33 @@
     {
       "icon": "BarChart3",
       "title": "Data analysis",
-      "subtitle": "Python, pandas, SQL",
-      "text": "Trend, gap and change analysis on business and assurance data."
+      "subtitle": "Large datasets · SQL · Python",
+      "text": "Trend, gap and change analysis on large business datasets, plus the cleaning and automated pipelines behind it."
     },
     {
-      "icon": "Sparkles",
-      "title": "AI evaluation",
-      "subtitle": "Prompts & model quality",
-      "text": "Checking AI answers against references and finding where they go wrong."
+      "icon": "ShieldCheck",
+      "title": "AI evals & testing",
+      "subtitle": "Model quality & security",
+      "text": "Evaluating AI responses, running structured evals and security testing to find where systems go wrong."
     },
     {
       "icon": "LayoutDashboard",
-      "title": "Reporting",
-      "subtitle": "Looker Studio & Airtable",
-      "text": "Dashboards and trackers that show progress at a glance."
+      "title": "Dashboards & automation",
+      "subtitle": "Reporting & workflows",
+      "text": "Dynamic dashboards for websites and teams, and automations built around what the work needs."
     },
     {
       "icon": "Code2",
-      "title": "Full stack",
-      "subtitle": "MERN apps",
-      "text": "React frontends, Express APIs and MongoDB, from login to deploy."
+      "title": "Systems & full stack",
+      "subtitle": "Management systems & MERN apps",
+      "text": "Project and management systems, React frontends and APIs, from data model to deploy."
     }
   ],
   "projects": [
     {
       "slug": "construction-pro",
       "title": "ConstructionPro — Professionals Nepal",
-      "summary": "A marketplace where families in Nepal find house designs with cost estimates and book the architects, engineers and contractors who drew them.",
+      "summary": "A marketplace where families in Nepal find house designs with honest cost estimates and book the architects, engineers, interior designers and contractors who drew them.",
       "meta": "Full-stack web app · MERN",
       "featured": true,
       "tags": [
@@ -154,13 +154,13 @@
         "MERN"
       ],
       "cover": "/projects/mcqprep/home.jpg",
-      "description": "Students pick a course and subject and get questions they haven't seen yet, with the correct answer and an explanation shown as soon as they answer. Progress and accuracy are tracked per subject without needing an account. Admins log in to manage courses, subjects and the question bank through a fast editor.",
+      "description": "Students pick a course and subject and get questions they haven't seen yet, with the correct answer and an explanation shown as soon as they answer. Progress and accuracy are tracked per subject without needing an account. The redesign uses a warm paper-and-ink palette, OMR-style answer bubbles and a working sample question on the home page. Admins sign in to manage courses, subjects and the question bank.",
       "features": [
         "No-repeat questions drawn from the ones a student hasn't answered yet",
-        "Answers are checked on the server — the answer key never reaches the browser early",
-        "Progress bars, accuracy, session score and streaks",
-        "Keyboard shortcuts for answering and moving to the next question",
-        "Admin dashboard, question bank search and a bulk-friendly question editor"
+        "Answers are checked on the server, so the answer key never reaches the browser early",
+        "Try-one sample question on the home page that runs entirely in the browser",
+        "Progress bars, accuracy, session score, streaks and keyboard shortcuts (A–F, 1–6, Enter)",
+        "JWT-protected admin with dashboard, question bank search and a bulk-friendly editor"
       ],
       "stack": [
         "React",
@@ -171,7 +171,8 @@
         "Express",
         "MongoDB",
         "Mongoose",
-        "JWT"
+        "JWT",
+        "bcrypt"
       ],
       "stats": [
         {
@@ -199,7 +200,7 @@
       "images": [
         {
           "src": "/projects/mcqprep/home.jpg",
-          "caption": "Home page"
+          "caption": "Home page with a live sample question"
         },
         {
           "src": "/projects/mcqprep/course.jpg",
@@ -228,44 +229,118 @@
       ]
     },
     {
+      "slug": "larder",
+      "title": "Larder — Grocery & Kitchen Store",
+      "summary": "An e-commerce storefront for groceries and kitchen goods: search, filters, a slide-out bag, promo codes, delivery slots and order history.",
+      "meta": "E-commerce web app · React",
+      "featured": true,
+      "tags": [
+        "E-commerce",
+        "React 19",
+        "Live demo"
+      ],
+      "cover": "/projects/larder/home.jpg",
+      "description": "Larder is a full shopping flow that runs entirely in the browser. Shoppers browse 62 real products across four aisles, search from anywhere with a keyboard shortcut, filter and sort with the state kept in the URL, fill a bag, apply a promo code, pick a delivery day and place an order. Cart, saved items and orders persist in localStorage, and every push is tested and deployed to GitHub Pages.",
+      "features": [
+        "Instant search on / or Ctrl K with arrow-key navigation",
+        "Aisle, price, stock and rating filters with five sort orders, all shareable through the URL",
+        "Product pages with gallery, specs, reviews and related items",
+        "Slide-out bag, free-delivery progress, promo codes and a validated checkout with delivery slots",
+        "Order history and saved items, hand-drawn SVG icons and full keyboard accessibility"
+      ],
+      "stack": [
+        "React 19",
+        "React Router",
+        "Vite",
+        "CSS",
+        "Vitest",
+        "GitHub Actions",
+        "GitHub Pages"
+      ],
+      "stats": [
+        {
+          "label": "Catalog",
+          "value": "62 products · 4 aisles"
+        },
+        {
+          "label": "Checkout",
+          "value": "Promo codes + delivery slots"
+        },
+        {
+          "label": "Deploy",
+          "value": "CI → GitHub Pages"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/kushal721/Ecommerce",
+        "live": "https://kushal721.github.io/Ecommerce/",
+        "demo": ""
+      },
+      "video": {
+        "src": "/projects/larder/demo.mp4",
+        "poster": "/projects/larder/home.jpg"
+      },
+      "images": [
+        {
+          "src": "/projects/larder/home.jpg",
+          "caption": "Home page"
+        },
+        {
+          "src": "/projects/larder/product.jpg",
+          "caption": "Product page"
+        },
+        {
+          "src": "/projects/larder/bag.jpg",
+          "caption": "Bag drawer"
+        },
+        {
+          "src": "/projects/larder/mobile.jpg",
+          "caption": "Fresh aisle on mobile"
+        }
+      ]
+    },
+    {
       "slug": "heart-attack-prediction",
-      "title": "Heart Attack Prediction",
-      "summary": "A machine learning model that predicts heart attack risk from clinical data, with tuning and a full evaluation.",
-      "meta": "Machine learning · Jupyter",
+      "title": "Cardiac Risk — Heart Disease Prediction",
+      "summary": "A random forest that estimates heart disease risk from 13 clinical measurements, served through an interactive web app with live predictions and a full model report.",
+      "meta": "Machine learning · FastAPI web app",
       "tags": [
         "Machine learning",
         "Health",
         "scikit-learn"
       ],
-      "cover": "/projects/heart-attack/correlation.png",
-      "coverFit": "contain",
-      "description": "An end-to-end ML project on a clinical heart-disease dataset: exploring and visualising the data, cleaning and one-hot encoding features, training a decision tree classifier, and tuning its hyperparameters with cross-validated grid search before evaluating it on held-out data.",
+      "cover": "/projects/heart-attack/overview.jpg",
+      "description": "A rebuild of my original notebook project. I found that the dataset's 1,125 rows were only 302 unique patients and that several codes (including the target) were inverted, fixed both, then compared four models with cross-validated grid search. The selected random forest is served by a FastAPI backend to a dependency-free web app where you can assess a patient live, try real held-out patients, or enter only the values you know and see an uncertainty range.",
       "features": [
-        "Exploratory analysis: distributions, correlations, age vs cholesterol, blood pressure by outcome",
-        "Feature engineering and one-hot encoding",
-        "Decision tree classifier tuned with GridSearchCV over 10 runs",
-        "Evaluation with confusion matrix and classification report"
+        "Data cleaning: removed duplicate patients and corrected mislabelled target, chest pain, slope and thal codes",
+        "Four models tuned with stratified 5-fold grid search; the winner is chosen on CV ROC-AUC, not the test set",
+        "Live risk estimate with drivers showing how much each value moves the prediction",
+        "Partial input: missing values filled from the 60 most similar patients, shown as a likely range",
+        "Model report with confusion matrix, ROC curve, model comparison and permutation importance",
+        "Hand-written SVG charts, dark mode and a mobile layout"
       ],
       "stack": [
         "Python",
         "pandas",
         "NumPy",
         "scikit-learn",
-        "Matplotlib",
-        "Seaborn"
+        "FastAPI",
+        "Pydantic",
+        "JavaScript",
+        "SVG"
       ],
       "stats": [
         {
-          "label": "Best CV score",
-          "value": "0.78"
-        },
-        {
           "label": "Test accuracy",
-          "value": "72%"
+          "value": "86.9%"
         },
         {
-          "label": "Model",
-          "value": "Decision tree"
+          "label": "ROC-AUC",
+          "value": "0.937"
+        },
+        {
+          "label": "Recall",
+          "value": "89.3%"
         }
       ],
       "links": {
@@ -273,76 +348,111 @@
       },
       "images": [
         {
-          "src": "/projects/heart-attack/correlation.png",
-          "caption": "Feature correlation heatmap"
+          "src": "/projects/heart-attack/overview.jpg",
+          "caption": "Overview"
         },
         {
-          "src": "/projects/heart-attack/age-cholesterol.png",
-          "caption": "Age vs cholesterol"
+          "src": "/projects/heart-attack/assess.jpg",
+          "caption": "Assessing a real test patient"
         },
         {
-          "src": "/projects/heart-attack/histograms.png",
-          "caption": "Feature distributions"
+          "src": "/projects/heart-attack/partial-input.jpg",
+          "caption": "Partial input with an uncertainty range"
         },
         {
-          "src": "/projects/heart-attack/target.png",
-          "caption": "Target distribution"
+          "src": "/projects/heart-attack/model-performance.jpg",
+          "caption": "Model performance report"
         },
         {
-          "src": "/projects/heart-attack/decision-tree.png",
-          "caption": "Tuned decision tree"
+          "src": "/projects/heart-attack/data-explorer.jpg",
+          "caption": "Data explorer"
+        },
+        {
+          "src": "/projects/heart-attack/dark-mode.jpg",
+          "caption": "Dark mode"
+        },
+        {
+          "src": "/projects/heart-attack/mobile.jpg",
+          "caption": "Mobile layout"
         }
       ]
     },
     {
-      "slug": "zomato-eda",
-      "title": "Zomato Restaurant Data Analysis",
-      "summary": "Exploratory data analysis of 9,500+ Zomato restaurants: ratings, countries, cities and online delivery.",
-      "meta": "Data analysis · Jupyter",
+      "slug": "autoeda",
+      "title": "AutoEDA — Automated Data Analysis",
+      "summary": "Upload any dataset and get its exploratory analysis automatically: inferred column types, data-quality warnings, distributions, correlations and maps. Zomato's 9,551 restaurants are built in as a demo.",
+      "meta": "Data analysis · Streamlit app",
       "tags": [
         "EDA",
-        "Data visualisation",
-        "pandas"
+        "Data quality",
+        "Automation"
       ],
-      "cover": "/projects/zomato-eda/ratings.png",
-      "coverFit": "contain",
-      "description": "Merged the Zomato restaurant dataset with country codes and explored it with pandas and Seaborn: checking missing values, grouping ratings into bands, comparing countries and cities, and finding where online delivery is available.",
+      "cover": "/projects/autoeda/overview.jpg",
+      "description": "What started as a Zomato EDA notebook became a tool that automates the analysis for any tabular file. It reads CSV, Excel, JSON (including nested API responses) and Parquet, detects encoding and delimiters, infers nine column types, and generates a full report with plain-language insights and a downloadable Markdown summary. The Zomato demo adds a guided analysis where every observation is computed from the data, and flags real errors in the source data.",
       "features": [
-        "Most records come from India, followed by the USA and the UK",
-        "Most ratings fall between 2.5 and 3.9, with a large share of unrated restaurants",
-        "Unrated restaurants are almost all in India",
-        "Online delivery is only offered in India and the UAE"
+        "Reads CSV/TSV, Excel, JSON, JSON Lines and Parquet; flattens nested JSON automatically",
+        "Infers numeric, categorical, boolean, datetime, multi-label, text, ID, constant and geo columns",
+        "Rule-based insights: missing data, zero-inflation, skew, outliers, dominant values and strong correlations",
+        "Correlation heatmaps, target-feature ranking (Spearman, η, Cramér's V), time series and maps",
+        "Found source errors in Zomato: wrong currency for the Philippines, 2,148 unrated rows, 497 rows at (0, 0)",
+        "Engine unit tests and headless UI tests across many kinds of dataset"
       ],
       "stack": [
         "Python",
         "pandas",
-        "Matplotlib",
-        "Seaborn",
-        "Jupyter"
+        "Streamlit",
+        "Plotly",
+        "pytest"
+      ],
+      "stats": [
+        {
+          "label": "Demo data",
+          "value": "9,551 restaurants"
+        },
+        {
+          "label": "Column types",
+          "value": "9 inferred"
+        },
+        {
+          "label": "Formats",
+          "value": "CSV · Excel · JSON · Parquet"
+        }
       ],
       "links": {
         "github": "https://github.com/kushal721/EDA"
       },
       "images": [
         {
-          "src": "/projects/zomato-eda/ratings.png",
-          "caption": "Ratings distribution"
+          "src": "/projects/autoeda/overview.jpg",
+          "caption": "Automated report: overview and inferred types"
         },
         {
-          "src": "/projects/zomato-eda/rating-colors.png",
-          "caption": "Ratings by rating band"
+          "src": "/projects/autoeda/insights.jpg",
+          "caption": "Plain-language insights and warnings"
         },
         {
-          "src": "/projects/zomato-eda/countries.png",
-          "caption": "Top 3 countries by records"
+          "src": "/projects/autoeda/numeric.jpg",
+          "caption": "Numeric summaries and distributions"
         },
         {
-          "src": "/projects/zomato-eda/cities.png",
-          "caption": "Top 5 cities"
+          "src": "/projects/autoeda/relationships.jpg",
+          "caption": "Correlation heatmap"
         },
         {
-          "src": "/projects/zomato-eda/missing.png",
-          "caption": "Missing values check"
+          "src": "/projects/autoeda/target.jpg",
+          "caption": "Target-feature ranking"
+        },
+        {
+          "src": "/projects/autoeda/map.jpg",
+          "caption": "Map of restaurants"
+        },
+        {
+          "src": "/projects/autoeda/guided.jpg",
+          "caption": "Guided Zomato analysis"
+        },
+        {
+          "src": "/projects/autoeda/ratings.jpg",
+          "caption": "Rating distribution and bands"
         }
       ]
     }
@@ -360,7 +470,7 @@
           "points": [
             "Analyse business and assurance datasets to find trends, discrepancies and insights that support operational decisions.",
             "Run gap, change and trend analyses across projects, including questionnaire responses, vendor status and answer integrity.",
-            "Build and maintain Looker Studio dashboards and Airtable trackers to monitor performance and report progress.",
+            "Build and maintain dashboards and project-management trackers to monitor performance and report progress.",
             "Automate repetitive data-processing and reporting tasks with Python and Excel to cut manual effort and turnaround time.",
             "Investigate data-quality issues and share findings with stakeholders to improve reporting reliability."
           ]
@@ -414,36 +524,41 @@
     {
       "title": "AI & Evaluation",
       "items": [
-        "Prompt engineering",
+        "AI evals",
         "AI model evaluation",
+        "Prompt engineering",
         "Response quality analysis",
         "Data annotation",
-        "Prompt performance evaluation"
+        "Security testing"
       ]
     },
     {
-      "title": "Programming & Data",
+      "title": "Data Analysis & Databases",
       "items": [
+        "Large-scale data analysis",
+        "Trend analysis",
         "Python",
         "pandas",
         "NumPy",
+        "SQL",
+        "PostgreSQL",
+        "MongoDB",
+        "Excel",
         "Matplotlib",
         "Seaborn",
-        "scikit-learn",
-        "SQL",
-        "Excel",
-        "JavaScript"
+        "scikit-learn"
       ]
     },
     {
-      "title": "Data Quality & Reporting",
+      "title": "Dashboards, Automation & Data Quality",
       "items": [
+        "Dynamic dashboards",
+        "Workflow automation",
+        "Automated data pipelines",
+        "Data cleaning",
         "Data validation",
-        "Gap analysis",
-        "Change analysis",
-        "Quality assurance",
-        "Looker Studio",
-        "Airtable"
+        "Gap & change analysis",
+        "Project management systems"
       ]
     },
     {
@@ -452,14 +567,30 @@
         "React",
         "Node.js",
         "Express",
-        "MongoDB",
         "REST APIs",
+        "JavaScript",
         "Tailwind CSS",
         "Git & GitHub",
         "Postman",
         "VS Code"
       ]
     }
+  ],
+  "marquee": [
+    "Data analysis",
+    "Large datasets",
+    "Dynamic dashboards",
+    "Automations",
+    "Data pipelines",
+    "Data cleaning",
+    "Management systems",
+    "AI evals",
+    "Security testing",
+    "SQL",
+    "PostgreSQL",
+    "MongoDB",
+    "Python",
+    "Full stack"
   ],
   "interests": [
     "AI engineering",

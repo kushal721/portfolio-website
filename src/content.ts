@@ -76,9 +76,11 @@ export interface Portfolio {
   experience: Job[];
   education: Education[];
   skills: { title: string; items: string[] }[];
+  // Short list for the scrolling strip in the Skills section; falls back to every skill.
+  marquee?: string[];
   interests?: string[];
 }
 
 const content: Portfolio = data;
 
-export const { site, profile, contact, highlights, projects, experience, education, skills, interests } = content;
+export const { site, profile, contact, highlights, projects, experience, education, skills, marquee, interests } = content;

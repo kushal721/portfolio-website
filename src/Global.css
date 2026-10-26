@@ -313,8 +313,8 @@ button {
 }
 
 .hero-avatar {
-  width: 160px;
-  height: 160px;
+  width: 192px;
+  height: 192px;
   border-radius: 50%;
   overflow: hidden;
   display: grid;
@@ -332,13 +332,14 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.2);
   filter: grayscale(1);
   transition: filter 0.5s ease, transform 0.5s var(--ease);
 }
 
 .hero-avatar:hover img {
   filter: grayscale(0);
-  transform: scale(1.05);
+  transform: scale(1.26);
 }
 
 .hero-available {
@@ -553,8 +554,14 @@ button {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 1100px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .card-wrap {
@@ -611,8 +618,8 @@ button {
 
 .card-badges {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 12px;
+  left: 12px;
   display: flex;
   gap: 6px;
 }
@@ -621,7 +628,7 @@ button {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 20px 22px 22px;
+  padding: 16px 18px 18px;
 }
 
 .card-top {
@@ -632,18 +639,19 @@ button {
 }
 
 .card-title {
-  margin-top: 10px;
+  margin-top: 8px;
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
 
 .card-summary {
-  margin-top: 8px;
+  margin-top: 6px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
   flex: 1;
 }
 
@@ -651,7 +659,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 .project-meta {
@@ -927,14 +935,19 @@ button {
 
 .marquee-track {
   display: flex;
+  align-items: center;
   width: max-content;
-  animation: marquee 50s linear infinite;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 .marquee-track span {
-  padding: 14px 22px;
+  padding: 16px 28px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -942,9 +955,16 @@ button {
   white-space: nowrap;
 }
 
+/* Small accent diamond between items. */
 .marquee-track span.sep {
-  padding: 14px 0;
-  color: var(--accent);
+  flex: none;
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border-radius: 1px;
+  background: var(--accent);
+  opacity: 0.7;
+  transform: rotate(45deg);
 }
 
 @keyframes marquee {
@@ -1456,8 +1476,8 @@ button {
   }
 
   .hero-avatar {
-    width: 132px;
-    height: 132px;
+    width: 152px;
+    height: 152px;
   }
 
   .back-to-top {

@@ -1,9 +1,9 @@
 import React from 'react';
-import { interests, skills } from '../content';
+import { interests, marquee, skills } from '../content';
 import { Reveal, SectionHeader } from './ui';
 
 const Skills: React.FC<{ index: string }> = ({ index }) => {
-  const all = skills.flatMap((g) => g.items);
+  const all = marquee?.length ? marquee : skills.flatMap((g) => g.items);
   // Two copies so the track can loop seamlessly.
   const track = [...all, ...all];
 
@@ -22,7 +22,7 @@ const Skills: React.FC<{ index: string }> = ({ index }) => {
           {track.map((s, i) => (
             <React.Fragment key={i}>
               <span>{s}</span>
-              <span className="sep">+</span>
+              <span className="sep" />
             </React.Fragment>
           ))}
         </div>
